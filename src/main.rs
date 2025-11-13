@@ -1,7 +1,16 @@
 use igpay::to_platin;
 
-fn main() {
-    let plain_in = String::from("Hello, there, Asher!");
+use clap::Parser;
 
-    println!("{}", to_platin(plain_in));
+#[derive(Parser)]
+#[command(version)]
+struct ClapArgs {
+    #[arg()]
+    plain: String,
+}
+
+fn main() {
+    let clap_args = ClapArgs::parse();
+
+    println!("\n{}\n", to_platin(&clap_args.plain).trim());
 }
