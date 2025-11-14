@@ -1,8 +1,34 @@
 #![warn(clippy::pedantic)]
 
+//! Converts strings to pig latin.
+//! # Use
+//! `igpay "example string"`
+//!
+//! Igpay will remove all capital letters and puctuation. It is the simplest form of a pig latin
+//! translator.
+//! In addition to this, it cannot be piped into: 
+//! ```compile_fail
+//! echo "hello" | igpay
+//! ```
+
+/// Array of vowels in English, to check if a word begins with a vowel.
 const VOWELS: [char; 5] = ['a', 'e', 'i', 'o', 'u'];
 
 #[must_use]
+
+///`to_platin` is the main function for converting `&str`s into pig-latinified `Strings`.
+///# Examples
+///
+/// ```
+/// let foo = "Hello, amazing world!";
+/// let bar = String::from("Hello, amazing world!");
+///
+/// assert_eq!("ellohay amazinghay orldway", igpay::to_platin(foo));
+///
+/// // Of course, to_platin works with a &String too as it coerces to &str.
+/// assert_eq!("ellohay amazinghay orldway", igpay::to_platin(&bar));
+/// ```
+
 pub fn to_platin(plain_in: &str) -> String {
     let mut platin_string = String::new();
 
@@ -44,5 +70,5 @@ pub fn to_platin(plain_in: &str) -> String {
         platin_string.push_str(&word[..]);
     }
 
-    platin_string
+    platin_string.trim().to_string()
 }

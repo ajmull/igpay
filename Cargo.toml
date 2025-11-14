@@ -1,7 +1,12 @@
 [package]
 name = "igpay"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2024"
+license = "MIT"
+description = "A lightweight pig latin translator"
+repository = "https://github.com/ajmull/igpay"
+readme = "README.md"
 
 [dependencies]
 clap = { version = "4.5.51", features = ["derive"] }
+

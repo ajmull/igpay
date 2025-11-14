@@ -12,5 +12,5 @@ struct ClapArgs {
 fn main() {
     let clap_args = ClapArgs::parse();
 
-    println!("\n{}\n", to_platin(&clap_args.plain).trim());
+    println!("\n{}\n", to_platin(&clap_args.plain));
 }
