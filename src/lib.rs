@@ -7,7 +7,7 @@
 //! Igpay will remove all capital letters and puctuation. It is the simplest form of a pig latin
 //! translator.
 //! In addition to this, it cannot be piped into: 
-//! ```compile_fail
+//! ```text
 //! echo "hello" | igpay
 //! ```
 
