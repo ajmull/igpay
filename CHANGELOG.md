@@ -3,6 +3,14 @@ All notable changes to the project will be documented here.
 This file is based upon the format specified in [Keep a Changelog](https://keepachangelog.com/).
 This project adheres to [SemVer](https://semver.org/).
 
+<<<<<<< HEAD
+=======
+## 1.1.2
+
+## Changed 
+- The way igpay checks for vowels in the first character of a word, to be more efficient.
+
+>>>>>>> efficient-vowel-check
 ## 1.1.1
 
 ### Added

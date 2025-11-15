@@ -1,6 +1,10 @@
 [package]
 name = "igpay"
+<<<<<<< HEAD
 version = "1.1.1"
+=======
+version = "1.1.2"
+>>>>>>> efficient-vowel-check
 edition = "2024"
 license = "MIT"
 description = "A lightweight pig latin translator"
