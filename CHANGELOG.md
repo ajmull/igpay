@@ -5,7 +5,7 @@ This project adheres to [SemVer](https://semver.org/).
 
 ## 1.1.2
 
-## Changed 
+### Changed 
 - The way igpay checks for vowels in the first character of a word, to be more efficient.
 
 ## 1.1.1
