@@ -3,9 +3,9 @@ use igpay::to_platin;
 use clap::Parser;
 
 #[derive(Parser)]
-#[command(version)]
+#[command(about = "Lightweight pig latin translator", version, long_about = None)]
 struct ClapArgs {
-    #[arg()]
+    /// String to be translated
     plain: String,
 }
 

@@ -7,12 +7,12 @@
 //! Igpay will remove all capital letters and puctuation. It is the simplest form of a pig latin
 //! translator.
 //! In addition to this, it cannot be piped into: 
-//! ```compile_fail
+//! ```text
 //! echo "hello" | igpay
 //! ```
 
 /// Array of vowels in English, to check if a word begins with a vowel.
-const VOWELS: [char; 5] = ['a', 'e', 'i', 'o', 'u'];
+pub const VOWELS: [char; 5] = ['a', 'e', 'i', 'o', 'u'];
 
 #[must_use]
 
@@ -53,9 +53,7 @@ pub fn to_platin(plain_in: &str) -> String {
         }
 
         // vowel check!
-        let vowel_match = VOWELS.iter().find(|&vowel| *vowel == first_char);
-                
-        if let Some(_) = vowel_match {
+        if VOWELS.contains(&first_char) {
             word.push_str("hay ");
             platin_string.push_str(&word[..]);
             continue;
