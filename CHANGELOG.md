@@ -3,6 +3,11 @@ All notable changes to the project will be documented here.
 This file is based upon the format specified in [Keep a Changelog](https://keepachangelog.com/).
 This project adheres to [SemVer](https://semver.org/).
 
+## 1.1.3
+
+### Fixed
+- An unnecessary semicolon and incorrect attribute placement.
+
 ## 1.1.2
 
 ### Changed 

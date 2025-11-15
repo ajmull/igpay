@@ -14,8 +14,6 @@
 /// Array of vowels in English, to check if a word begins with a vowel.
 pub const VOWELS: [char; 5] = ['a', 'e', 'i', 'o', 'u'];
 
-#[must_use]
-
 ///`to_platin` is the main function for converting `&str`s into pig-latinified `Strings`.
 ///# Examples
 ///
@@ -28,7 +26,7 @@ pub const VOWELS: [char; 5] = ['a', 'e', 'i', 'o', 'u'];
 /// // Of course, to_platin works with a &String too as it coerces to &str.
 /// assert_eq!("ellohay amazinghay orldway", igpay::to_platin(&bar));
 /// ```
-
+#[must_use]
 pub fn to_platin(plain_in: &str) -> String {
     let mut platin_string = String::new();
 
@@ -57,7 +55,7 @@ pub fn to_platin(plain_in: &str) -> String {
             word.push_str("hay ");
             platin_string.push_str(&word[..]);
             continue;
-        };
+        }
 
         word.remove(0);
 
