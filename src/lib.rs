@@ -31,6 +31,10 @@
 //! - All words are pushed to a new string.
 //! - Resulting string is trimmed, then returned.
 
+pub trait Platin {
+    fn to_platin(&self) -> String;
+}
+
 /// Array of vowels in English.
 /// # Examples
 ///
@@ -63,83 +67,87 @@
 /// ```
 pub const VOWELS: [char; 5] = ['a', 'e', 'i', 'o', 'u'];
 
-/// `to_platin` is the main function for converting
-/// [&str](https://doc.rust-lang.org/stable/std/primitive.str.html)s into pig-latinified
-/// [String](https://doc.rust-lang.org/stable/std/struct.string.html)s.
-///
-/// # Basic Use
-/// ``` 
-/// igpay::to_platin("A str."); 
-/// ```
-///
-/// # Examples
-///
-/// ```
-/// let foo = "Hello, amazing world!";
-/// let bar = String::from("Hello, amazing world!");
-///
-/// assert_eq!("ellohay amazinghay orldway", igpay::to_platin(foo));
-///
-/// // Of course, to_platin works with a &String too as it coerces to &str.
-/// assert_eq!("ellohay amazinghay orldway", igpay::to_platin(&bar));
-/// ```
-///
-/// ### Dealing with non-English strings
-/// `to_platin` is designed only for use with the English language, or languages that have the same vowel
-/// configuration as is defined in [VOWELS](https://docs.rs/igpay/latest/igpay/constant.VOWELS.html).
-///
-/// **This doesn't mean `to_platin` won't try!**
-///
-/// There is no functionality for `to_platin` to
-/// [panic](https://doc.rust-lang.org/stable/std/macro.panic.html) or return an error etc. if it
-/// encounters a language that it is not designed for.
-///
-/// It will follow the same rules as usual:
-/// ```
-/// assert_eq!(igpay::to_platin("あ"), "あay");
-/// ```
-///
-/// # Panics
-/// `to_platin` will only panic if the value at pos 0 in the chars iterator returns None.
-/// This probably will never happen, though, and so should be reported as an issue on [the GitHub
-/// page](https://github.com/ajmull/igpay).
-#[must_use]
-pub fn to_platin(plain_in: &str) -> String {
-    let mut platin_string = String::new();
+impl Platin for str {
+    /// `to_platin` is the main function for converting
+    /// [&str](https://doc.rust-lang.org/stable/std/primitive.str.html)s into pig-latinified
+    /// [String](https://doc.rust-lang.org/stable/std/struct.string.html)s.
+    ///
+    /// # Basic Use
+    /// ``` 
+    /// igpay::to_platin("A str."); 
+    /// ```
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// let foo = "Hello, amazing world!";
+    /// let bar = String::from("Hello, amazing world!");
+    ///
+    /// assert_eq!("ellohay amazinghay orldway", igpay::to_platin(foo));
+    ///
+    /// // Of course, to_platin works with a &String too as it coerces to &str.
+    /// assert_eq!("ellohay amazinghay orldway", igpay::to_platin(&bar));
+    /// ```
+    ///
+    /// ### Dealing with non-English strings
+    /// `to_platin` is designed only for use with the English language, or languages that have the same vowel
+    /// configuration as is defined in [VOWELS](https://docs.rs/igpay/latest/igpay/constant.VOWELS.html).
+    ///
+    /// **This doesn't mean `to_platin` won't try!**
+    ///
+    /// There is no functionality for `to_platin` to
+    /// [panic](https://doc.rust-lang.org/stable/std/macro.panic.html) or return an error etc. if it
+    /// encounters a language that it is not designed for.
+    ///
+    /// It will follow the same rules as usual:
+    /// ```
+    /// assert_eq!(igpay::to_platin("あ"), "あay");
+    /// ```
+    ///
+    /// # Panics
+    /// `to_platin` will only panic if the value at pos 0 in the chars iterator returns None.
+    /// This probably will never happen, though, and so should be reported as an issue on [the GitHub
+    /// page](https://github.com/ajmull/igpay).
+    fn to_platin(&self) -> String {
+        // For compatibility purposes
+        let plain_in = self;
 
-    for word in plain_in.to_lowercase().split_whitespace() {
-        let mut word = word.trim().to_string();
+        let mut platin_string = String::new();
 
-        let first_char = word.chars().next().expect("Error. This is probably an unfixable bug, and you should report this.\n\
+        for word in plain_in.to_lowercase().split_whitespace() {
+            let mut word = word.trim().to_string();
+
+            let first_char = word.chars().next().expect("Error. This is probably an unfixable bug, and you should report this.\n\
             Info for programmers: item 0 in the word character iterator returned None."
-        );
+            );
 
-        // punctuation remover
-        let mut indices_to_remove: Vec<usize> = Vec::new();
-        for (i, character) in word.clone().chars().enumerate() {
-            if character.is_ascii_punctuation() {
-                indices_to_remove.push(i);
+            // punctuation remover
+            let mut indices_to_remove: Vec<usize> = Vec::new();
+            for (i, character) in word.clone().chars().enumerate() {
+                if character.is_ascii_punctuation() {
+                    indices_to_remove.push(i);
+                }
             }
-        }
-        for index in indices_to_remove {
-            word.remove(index);
-        }
+            for index in indices_to_remove {
+                word.remove(index);
+            }
 
-        // vowel check!
-        if VOWELS.contains(&first_char) {
-            word.push_str("hay ");
+            // vowel check!
+            if VOWELS.contains(&first_char) {
+                word.push_str("hay ");
+                platin_string.push_str(&word[..]);
+                continue;
+            }
+
+            word.remove(0);
+
+            word.push(first_char);
+            word.push_str("ay ");
+
+
             platin_string.push_str(&word[..]);
-            continue;
         }
 
-        word.remove(0);
-
-        word.push(first_char);
-        word.push_str("ay ");
-
-
-        platin_string.push_str(&word[..]);
+        platin_string.trim().to_string()
     }
-
-    platin_string.trim().to_string()
 }

@@ -1,4 +1,4 @@
-use igpay::to_platin;
+use igpay::Platin;
 
 use clap::Parser;
 
@@ -12,5 +12,5 @@ struct ClapArgs {
 fn main() {
     let clap_args = ClapArgs::parse();
 
-    println!("\n{}\n", to_platin(&clap_args.plain));
+    println!("\n{}\n", &clap_args.plain.to_platin());
 }
