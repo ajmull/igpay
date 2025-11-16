@@ -21,7 +21,7 @@
 //!
 //! #### For words beginning with an English consonant
 //! - Words have that first consonant removed and appended to
-//! the end of the string.
+//!   the end of the string.
 //! - The string `"ay "` (notice the trailing whitespace) is appended to the string.
 //!
 //! #### For words beginning with an vowel defined in [VOWELS](https://docs.rs/igpay/latest/igpay/constant.VOWELS.html)
@@ -35,7 +35,7 @@
 /// # Examples
 ///
 /// - VOWELS can be used simply as a useful
-/// [array](https://doc.rust-lang.org/stable/std/primitive.array.html) of English vowels:
+///   [array](https://doc.rust-lang.org/stable/std/primitive.array.html) of English vowels:
 /// ```
 /// use igpay::VOWELS;
 ///
@@ -45,7 +45,7 @@
 /// ```
 ///
 /// - It can, however, also be used to check a
-/// [char](https://doc.rust-lang.org/stable/std/primitive.char.html) to find if it is a vowel:
+///   [char](https://doc.rust-lang.org/stable/std/primitive.char.html) to find if it is a vowel:
 /// ```
 /// use igpay::VOWELS;
 ///
@@ -60,6 +60,7 @@
 /// assert_eq!(is_vowel, vec![
 ///     true, false, false, true, false, true, false, false, false, true
 /// ]);
+/// ```
 pub const VOWELS: [char; 5] = ['a', 'e', 'i', 'o', 'u'];
 
 /// `to_platin` is the main function for converting
@@ -97,7 +98,11 @@ pub const VOWELS: [char; 5] = ['a', 'e', 'i', 'o', 'u'];
 /// ```
 /// assert_eq!(igpay::to_platin("あ"), "あay");
 /// ```
-
+///
+/// # Panics
+/// `to_platin` will only panic if the value at pos 0 in the chars iterator returns None.
+/// This probably will never happen, though, and so should be reported as an issue on [the GitHub
+/// page](https://github.com/ajmull/igpay).
 #[must_use]
 pub fn to_platin(plain_in: &str) -> String {
     let mut platin_string = String::new();
@@ -105,11 +110,9 @@ pub fn to_platin(plain_in: &str) -> String {
     for word in plain_in.to_lowercase().split_whitespace() {
         let mut word = word.trim().to_string();
 
-        let first_char = word.chars().next().unwrap_or_else(|| {
-            println!("Error. This is probably an unfixable bug, and you should report this.\n\
-            Info for programmers: item 0 in the word character iterator returned None.");
-            std::process::exit(1);
-        });
+        let first_char = word.chars().next().expect("Error. This is probably an unfixable bug, and you should report this.\n\
+            Info for programmers: item 0 in the word character iterator returned None."
+        );
 
         // punctuation remover
         let mut indices_to_remove: Vec<usize> = Vec::new();
