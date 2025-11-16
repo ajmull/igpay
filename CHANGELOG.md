@@ -3,7 +3,7 @@ All notable changes to the project will be documented here.
 This file is based upon the format specified in [Keep a Changelog](https://keepachangelog.com/).
 This project adheres to [SemVer](https://semver.org/).
 
-## [1.1.4](https://github.com/ajmull/igpay/releases/tag/v1.1.3) a.k.a. The Big Doc Update
+## [1.1.4](https://github.com/ajmull/igpay/releases/tag/v1.1.4) a.k.a. The Big Doc Update
 
 ### Added 
 - A LOT more documentation for all public items
