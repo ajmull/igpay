@@ -33,12 +33,11 @@ This project adheres to [SemVer](https://semver.org/).
 ## 1.0.1
 
 ### Added 
+- Entries in Cargo.toml for release to crates.io
 
 #### Documentation for: 
 - Igpay
 - `to_platin`
-
-- Entries in Cargo.toml for release to crates.io
 
 ### Changed
 
