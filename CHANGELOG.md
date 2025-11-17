@@ -13,6 +13,7 @@ This project adheres to [SemVer](https://semver.org/).
 - `to_platin` from a function to a method implemented upon `Platin`.
 
 ### Fixed
+- Spelling/grammar mistakes in documentation
 
 ## [1.1.4](https://github.com/ajmull/igpay/releases/tag/v1.1.4) a.k.a. The Big Doc Update
 
