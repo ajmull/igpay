@@ -1,9 +1,10 @@
 #[cfg(test)]
 mod tests {
+    use igpay::Platin;
     #[test]
     fn test_to_platin() {
         let foo = "Hello, amazing world!";
 
-        assert_eq!("ellohay amazinghay orldway", igpay::to_platin(foo));
+        assert_eq!("ellohay amazinghay orldway", foo.to_platin());
     }
 }

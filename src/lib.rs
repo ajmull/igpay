@@ -68,25 +68,23 @@ pub trait Platin {
 pub const VOWELS: [char; 5] = ['a', 'e', 'i', 'o', 'u'];
 
 impl Platin for str {
-    /// `to_platin` is the main function for converting
+
+    /// `to_platin` is the main method for converting
     /// [&str](https://doc.rust-lang.org/stable/std/primitive.str.html)s into pig-latinified
     /// [String](https://doc.rust-lang.org/stable/std/struct.string.html)s.
-    ///
-    /// # Basic Use
-    /// ``` 
-    /// igpay::to_platin("A str."); 
-    /// ```
     ///
     /// # Examples
     ///
     /// ```
+    /// use igpay::Platin;
+    ///
     /// let foo = "Hello, amazing world!";
     /// let bar = String::from("Hello, amazing world!");
     ///
-    /// assert_eq!("ellohay amazinghay orldway", igpay::to_platin(foo));
+    /// assert_eq!("ellohay amazinghay orldway", foo.to_platin());
     ///
     /// // Of course, to_platin works with a &String too as it coerces to &str.
-    /// assert_eq!("ellohay amazinghay orldway", igpay::to_platin(&bar));
+    /// assert_eq!("ellohay amazinghay orldway", &bar.to_platin());
     /// ```
     ///
     /// ### Dealing with non-English strings
@@ -101,7 +99,9 @@ impl Platin for str {
     ///
     /// It will follow the same rules as usual:
     /// ```
-    /// assert_eq!(igpay::to_platin("あ"), "あay");
+    /// use igpay::Platin;
+    ///
+    /// assert_eq!("あ".to_platin(), "あay");
     /// ```
     ///
     /// # Panics
