@@ -1,19 +1,19 @@
 #![warn(clippy::pedantic)]
 
-//! Converts strings to pig latin.
+//! Converts strings to Pig Latin.
 //! # Use
 //! ```text
 //! igpay "example string"
 //! ```
 //!
-//! Igpay will remove all capital letters and puctuation. It is the simplest form of a pig latin
+//! Igpay will remove all capital letters and punctuation. It is the simplest form of a Pig Latin
 //! translator.
 //! In addition to this, it cannot be piped into: 
 //! ```text
 //! echo "hello" | igpay
 //! ```
 //!
-//! Pig latin is not a well-defined language. As a result of this, Igpay's idea of pig latin may not be the same as another translator's.
+//! Pig latin is not a well-defined language. As a result of this, Igpay's idea of Pig Latin may not be the same as another translator's.
 //!
 //! ### The rules for Igpay's translation are as follows:
 //! - All strings inputted to Igpay are trimmed.
@@ -70,7 +70,7 @@ pub const VOWELS: [char; 5] = ['a', 'e', 'i', 'o', 'u'];
 impl Platin for str {
 
     /// `to_platin` is the main method for converting
-    /// [&str](https://doc.rust-lang.org/stable/std/primitive.str.html)s into pig-latinified
+    /// [&str](https://doc.rust-lang.org/stable/std/primitive.str.html)s into Pig-Latinified
     /// [String](https://doc.rust-lang.org/stable/std/struct.string.html)s.
     ///
     /// # Examples
