@@ -3,6 +3,17 @@ All notable changes to the project will be documented here.
 This file is based upon the format specified in [Keep a Changelog](https://keepachangelog.com/).
 This project adheres to [SemVer](https://semver.org/).
 
+## [2.0.0](https://github.com/ajmull/igpay/releases/tag/v2.0.0)
+
+### Added
+- `Platin` trait that must be implemented in order for a type to be converted to Pig Latin. Implemented 
+    by [str](https://doc.rust-lang.org/stable/std/primitive.str.html) by default.
+
+### Changed
+- `to_platin` from a function to a method implemented upon `Platin`.
+
+### Fixed
+
 ## [1.1.4](https://github.com/ajmull/igpay/releases/tag/v1.1.4) a.k.a. The Big Doc Update
 
 ### Added 
