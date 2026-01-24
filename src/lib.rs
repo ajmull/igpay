@@ -31,6 +31,34 @@
 //! - All words are pushed to a new string.
 //! - Resulting string is trimmed, then returned.
 
+/// Trait that allows
+/// [`to_platin()`](https://docs.rs/igpay/latest/igpay/trait.Platin.html#tymethod.to_platin)
+/// to be called upon a type.
+///
+/// - Implemented by default on [str](https://doc.rust-lang.org/stable/std/primitive.str.html).
+///
+/// # Examples
+/// ```
+/// use igpay::Platin;
+///
+/// struct Wrapper {
+///     s: String,
+/// }
+///
+/// impl igpay::Platin for Wrapper {
+///     fn to_platin(&self) -> String {
+///         self.s.to_platin()
+///     }
+/// }
+///
+/// fn main() {
+///     let foo = Wrapper {
+///         s: String::from("something"),
+///     };
+///
+///     assert_eq!(String::from("omethingsay"), foo.to_platin());
+/// }
+/// ```
 pub trait Platin {
     fn to_platin(&self) -> String;
 }
